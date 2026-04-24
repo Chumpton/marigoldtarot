@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marigold Tarot & Oracle | Illuminating Your Path</title>
+    <meta name="description" content="Discover clarity and mystical elegance with Marigold Tarot & Oracle. Minimalist, spiritual-chic tarot readings and tools.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parchment: '#F9F7F2',
+                        amethyst: '#4B0082',
+                        marigold: {
+                            DEFAULT: '#FFB800',
+                            dark: '#E0A300'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Story Script"', '"Dancing Script"', '"Caveat"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 4px 14px 0 rgba(255, 184, 0, 0.39)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .fade-in {
+                @apply opacity-0 translate-y-8 transition-all duration-1000 ease-out;
+            }
+            .fade-in.visible {
+                @apply opacity-100 translate-y-0;
+            }
+            .input-minimal {
+                @apply w-full bg-transparent border-0 border-b border-amethyst py-3 px-0 focus:outline-none focus:ring-0 focus:border-marigold transition-colors text-amethyst placeholder-amethyst/50;
+            }
+            .btn-primary {
+                @apply inline-block bg-marigold text-amethyst font-medium px-8 py-3 rounded-full transition-all duration-300 hover:bg-marigold-dark hover:shadow-gold-glow hover:-translate-y-0.5;
+            }
+        }
+        
+        /* Floating animation for hero image */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-parchment text-amethyst font-sans antialiased relative overflow-x-hidden z-0">
+
+    <!-- Alive Background Elements (Transparent Marigold Gradients) -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <i class="fa-solid fa-sun absolute top-[-5%] left-[-10%] text-[20rem] text-transparent bg-clip-text bg-gradient-to-br from-marigold/20 to-amethyst/10 rotate-45 blur-md animate-float" style="animation-duration: 8s;"></i>
+        <i class="fa-solid fa-fan absolute bottom-[10%] right-[-15%] text-[30rem] text-transparent bg-clip-text bg-gradient-to-tr from-marigold/10 to-transparent -rotate-12 blur-lg animate-pulse" style="animation-duration: 7s;"></i>
+        <i class="fa-solid fa-sun absolute top-[40%] right-[5%] text-[15rem] text-transparent bg-clip-text bg-gradient-to-b from-amethyst/5 to-marigold/10 rotate-90 blur-md animate-float" style="animation-duration: 9s;"></i>
+        <i class="fa-solid fa-fan absolute bottom-[-10%] left-[20%] text-[25rem] text-transparent bg-clip-text bg-gradient-to-tr from-marigold/15 to-amethyst/5 rotate-180 blur-xl animate-float" style="animation-duration: 12s;"></i>
+    </div>    <!-- Sticky Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-parchment/80 backdrop-blur-md border-b border-amethyst/10 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-semibold tracking-wide flex items-center gap-2 hover:text-marigold transition-colors">
+                <i class="fa-solid fa-sun text-marigold text-xl"></i>
+                Marigold Tarot
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-amethyst focus:outline-none hover:text-marigold transition-colors" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-8 items-center text-sm font-medium tracking-wider uppercase">
+                <a href="#services" class="hover:text-marigold transition-colors">Services</a>
+                <a href="#shop" class="hover:text-marigold transition-colors">Shop</a>
+                <a href="#about" class="hover:text-marigold transition-colors">About</a>
+                <a href="#contact" class="hover:text-marigold transition-colors">Contact</a>
+            </nav>
+        </div>
+        <!-- Mobile Nav (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-parchment border-b border-amethyst/10 px-6 py-4 shadow-sm">
+            <nav class="flex flex-col gap-4 text-sm font-medium tracking-wider uppercase text-center">
+                <a href="#services" class="hover:text-marigold transition-colors mobile-link py-2 border-b border-amethyst/5">Services</a>
+                <a href="#shop" class="hover:text-marigold transition-colors mobile-link py-2 border-b border-amethyst/5">Shop</a>
+                <a href="#about" class="hover:text-marigold transition-colors mobile-link py-2 border-b border-amethyst/5">About</a>
+                <a href="#contact" class="hover:text-marigold transition-colors mobile-link py-2">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-24 px-6 overflow-hidden min-h-[90vh] flex items-center">
+            <div class="max-w-4xl mx-auto flex flex-col items-center text-center gap-10 w-full">
+                <div class="w-full flex justify-center fade-in">
+                    <!-- Hero Marigold Image -->
+                    <div class="w-64 h-64 md:w-80 md:h-80 relative flex items-center justify-center animate-float">
+                        <img src="./assets/hero_marigold.png" alt="Marigold Flower" class="w-full h-full object-contain mix-blend-multiply hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+
+                <div class="w-full fade-in" style="transition-delay: 200ms;">
+                    <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-6 text-amethyst">
+                        Illuminating Your Path
+                    </h1>
+                    <p class="text-lg md:text-xl font-light mb-10 leading-relaxed max-w-2xl mx-auto opacity-90">
+                        Discover the mystical elegance of tarot. Unveil the wisdom of the universe through minimalist spreads and profound insight.
+                    </p>
+                    
+                    <a href="#tarot-process" class="btn-primary mb-12">
+                        Explore the Process
+                    </a>
+
+                    <div class="flex justify-center mb-8 w-full fade-in" style="transition-delay: 300ms;">
+                        <img src="./assets/tarrit.png" alt="Tarot Concept" class="max-w-[200px] md:max-w-[280px] w-full drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- Profile link/screenshot under Hero -->
+                    <div class="flex flex-col items-center gap-4 mt-6 fade-in" style="transition-delay: 400ms;">
+                        <span class="font-serif text-2xl italic text-amethyst/70">by</span>
+                        <img src="./assets/Screenshot%202026-04-23%20144205.png" alt="Instagram Profile" class="w-full max-w-[240px] md:max-w-[280px] rounded-3xl shadow-xl border border-amethyst/10">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarot Process & Services Section -->
+        <section id="tarot-process" class="py-24 px-6 bg-amethyst/5">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- The Process -->
+                <div class="flex flex-col md:flex-row items-center gap-16 mb-24">
+                    <div class="w-full md:w-1/2 fade-in">
+                        <!-- 'The World' Card image requested by user -->
+                        <img src="./assets/Screenshot%202026-04-23%20142641.png" alt="My Tarot Process" class="w-full max-w-sm mx-auto rounded-3xl shadow-2xl border-4 border-amethyst/10">
+                    </div>
+                    <div class="w-full md:w-1/2 fade-in text-center md:text-left" style="transition-delay: 200ms;">
+                        <h2 class="font-serif text-4xl md:text-5xl mb-6">My Tarot Process</h2>
+                        <div class="w-16 h-px bg-marigold mx-auto md:mx-0 mb-8"></div>
+                        <p class="text-lg font-light leading-relaxed opacity-90 mb-6">
+                            My approach to tarot is grounded in clarity, intuition, and minimalist elegance. I view the cards not as tools for rigid fortune-telling, but as mirrors reflecting your inner truth and the energies surrounding you.
+                        </p>
+                        <p class="text-lg font-light leading-relaxed opacity-90 mb-8">
+                            Each reading begins with a grounding meditation, aligning our intentions. We pull the cards together, unraveling the narrative they present. Whether you are seeking immediate guidance or deep spiritual mapping, the process is always a collaborative, illuminating journey.
+                        </p>
+                        <div class="flex justify-center w-full mt-8">
+                            <img src="./assets/Screenshot%202026-04-23%20143925.png" alt="Tarot Spread Process" class="w-full max-w-md rounded-2xl shadow-xl border-2 border-amethyst/10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Types -->
+                <div id="services" class="text-center mb-16 fade-in pt-12">
+                    <h2 class="font-serif text-3xl md:text-4xl mb-4">Reading Types</h2>
+                    <div class="w-16 h-px bg-marigold mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- Service 1 -->
+                    <div class="border border-amethyst/30 p-8 rounded-sm bg-parchment hover:border-marigold transition-colors duration-300 fade-in group" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-amethyst/5 flex items-center justify-center mb-6 group-hover:bg-marigold/10 transition-colors">
+                            <i class="fa-solid fa-sparkles text-marigold text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-3">The Quick Draw</h3>
+                        <p class="text-sm font-light leading-relaxed mb-6 opacity-80">
+                            A swift three-card spread to provide immediate clarity on a specific pressing question or choice.
+                        </p>
+                        <p class="font-medium text-marigold">$35</p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="border border-amethyst/30 p-8 rounded-sm bg-parchment hover:border-marigold transition-colors duration-300 fade-in group" style="transition-delay: 200ms;">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-amethyst/5 flex items-center justify-center mb-6 group-hover:bg-marigold/10 transition-colors">
+                            <i class="fa-solid fa-moon text-marigold text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-3">The Full Spread</h3>
+                        <p class="text-sm font-light leading-relaxed mb-6 opacity-80">
+                            An in-depth ten-card Celtic Cross reading exploring past influences, current energies, and future potentials.
+                        </p>
+                        <p class="font-medium text-marigold">$85</p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="border border-amethyst/30 p-8 rounded-sm bg-parchment hover:border-marigold transition-colors duration-300 fade-in group" style="transition-delay: 300ms;">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-amethyst/5 flex items-center justify-center mb-6 group-hover:bg-marigold/10 transition-colors">
+                            <i class="fa-solid fa-sun-plant-wilt text-marigold text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-3">Yearly Forecast</h3>
+                        <p class="text-sm font-light leading-relaxed mb-6 opacity-80">
+                            A comprehensive twelve-month overview drawing one card per month to guide your journey ahead.
+                        </p>
+                        <p class="font-medium text-marigold">$120</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Celestial Analysis Section -->
+        <section id="astrology" class="py-24 px-6 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-16">
+                    <div class="w-full md:w-1/2 flex justify-center fade-in">
+                        <!-- Progressed Chart Image -->
+                        <img src="./assets/Screenshot%202026-04-23%20150309.png" alt="Celestial Analysis Chart" class="w-full max-w-md rounded-[3rem] shadow-2xl border-4 border-marigold/20 hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="w-full md:w-1/2 fade-in text-center md:text-left" style="transition-delay: 200ms;">
+                        <h2 class="font-serif text-4xl md:text-5xl mb-6">Celestial Analysis</h2>
+                        <div class="w-16 h-px bg-marigold mx-auto md:mx-0 mb-8"></div>
+                        <p class="text-lg font-light leading-relaxed opacity-90 mb-6">
+                            Beyond the cards, my practice explores the cosmos through Marigold's special progressed chart. This intuitive astrological method uncovers how the planetary cycles map your spiritual evolution over time.
+                        </p>
+                        <p class="text-lg font-light leading-relaxed opacity-90 mb-10">
+                            Rooted in an accurate zodiac design honoring nature and the earthly seasons, a Celestial Analysis session offers a breathtaking view of your true cosmic trajectory. 
+                        </p>
+                        <a href="#contact" class="btn-primary">
+                            Book an Analysis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Section -->
+        <section id="shop" class="py-24 px-6 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 fade-in">
+                    <div>
+                        <h2 class="font-serif text-4xl md:text-5xl mb-4">Curated Tools</h2>
+                        <div class="w-16 h-px bg-marigold"></div>
+                    </div>
+                    <a href="#" class="text-sm font-medium tracking-wider uppercase hover:text-marigold transition-colors mt-6 md:mt-0 flex items-center gap-2">
+                        View All Shop <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Product 1 -->
+                    <div class="fade-in group cursor-pointer" style="transition-delay: 100ms;">
+                        <div class="bg-parchment aspect-[4/3] flex items-center justify-center relative overflow-hidden mb-6 group-hover:shadow-lg transition-shadow duration-300">
+                            <!-- Custom Deck Image -->
+                            <img src="./assets/tarot_deck.png" alt="Custom Marigold Tarot Deck" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-serif text-2xl mb-1 group-hover:text-marigold transition-colors">The Marigold Deck</h3>
+                                <p class="text-sm opacity-70">Gold-foiled edge, 78 cards</p>
+                            </div>
+                            <span class="font-medium">$55</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="fade-in group cursor-pointer" style="transition-delay: 300ms;">
+                        <div class="bg-parchment aspect-[4/3] flex items-center justify-center relative overflow-hidden mb-6">
+                            <!-- Minimalist Book Representation -->
+                            <div class="w-48 h-64 border border-amethyst bg-[#F3F0E6] flex flex-col justify-end p-4 shadow-md group-hover:scale-105 transition-transform duration-500 relative">
+                                <div class="absolute left-4 top-0 bottom-0 w-px bg-amethyst/20"></div>
+                                <span class="font-serif text-sm tracking-widest uppercase mb-2">Journal</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-serif text-2xl mb-1 group-hover:text-marigold transition-colors">Linen Journals</h3>
+                                <p class="text-sm opacity-70">Hand-bound, blank pages</p>
+                            </div>
+                            <span class="font-medium">$28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About (Brief Placeholder) -->
+        <section id="about" class="py-24 px-6 bg-amethyst/5">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <i class="fa-solid fa-quote-left text-marigold text-4xl mb-6 opacity-50"></i>
+                <h2 class="font-serif text-3xl md:text-4xl leading-relaxed mb-8">
+                    "Tarot is not about predicting the future, but illuminating the present so you can walk your truest path with intention and clarity."
+                </h2>
+                <div class="w-16 h-px bg-marigold mx-auto"></div>
+            </div>
+        </section>
+
+        <!-- Booking/Contact -->
+        <section id="contact" class="py-32 px-6">
+            <div class="max-w-2xl mx-auto fade-in">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl md:text-5xl mb-4">Connect With Me</h2>
+                    <p class="font-light opacity-80">Reach out for custom readings or inquiries.</p>
+                </div>
+                
+                <form class="space-y-8" onsubmit="event.preventDefault(); alert('Message sent!');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <input type="text" id="name" placeholder="Your Name" class="input-minimal" required>
+                        </div>
+                        <div>
+                            <input type="email" id="email" placeholder="Your Email" class="input-minimal" required>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Select dropdown with custom styling -->
+                        <select class="input-minimal appearance-none bg-transparent cursor-pointer" required>
+                            <option value="" disabled selected class="text-amethyst/50">Select Inquiry Type</option>
+                            <option value="booking">Book a Reading</option>
+                            <option value="shop">Shop Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea id="message" rows="4" placeholder="Your Message" class="input-minimal resize-none" required></textarea>
+                    </div>
+                    <div class="text-center pt-4">
+                        <button type="submit" class="btn-primary w-full md:w-auto">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-amethyst text-marigold py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="font-serif text-2xl tracking-wide flex items-center gap-2">
+                <i class="fa-solid fa-sun text-marigold text-lg"></i>
+                Marigold Tarot
+            </div>
+            
+            <div class="flex gap-6 text-xl">
+                <a href="#" class="hover:text-white transition-colors" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="hover:text-white transition-colors" aria-label="Pinterest">
+                    <i class="fa-brands fa-pinterest"></i>
+                </a>
+                <a href="#" class="hover:text-white transition-colors" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+            
+            <div class="text-sm font-light text-marigold/70">
+                &copy; 2026 Marigold Tarot & Oracle. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once it's visible
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
